@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>profile</title>
+    <style>
+        #body {
+            text-align: center;
+            padding: 20px;
+        }
+        #sign-in-btn {
+            display: inline-block;
+            background-color: #000000;
+            color: #ffffff;
+            padding: 5px 20px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 10px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        #sign-in-btn:hover {
+            background-color: #0056b3;
+        }
+        #sign-up-btn {
+            display: inline-block;
+            background-color: #000000;
+            color: #ffffff;
+            padding: 5px 20px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        #sign-up-btn:hover {
+            background-color: #1e7e34;
+        }
+    </style>
+</head>
+<body>
+    <div id="header-container"></div>
+    <div id="body"></div>
+    <footer id="footer"></footer>
+
+    <script>
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-container').innerHTML = data;
+            })
+            .catch(error => {
+                console.error('Error fetching header.html:', error);
+            });
+
+        // Add the sign-in and sign-up buttons
+        const bodyDiv = document.getElementById("body");
+        const signInBtn = document.createElement("button");
+        signInBtn.id = "sign-in-btn";
+        signInBtn.innerText = "Sign In";
+        signInBtn.addEventListener('click', () => {
+            window.location.href = 'sign_in.html';
+        });
+        bodyDiv.appendChild(signInBtn);
+        const signUpBtn = document.createElement("button");
+        signUpBtn.id = "sign-up-btn";
+        signUpBtn.innerText = "Sign Up";
+        signUpBtn.onclick = function() {
+            window.location = "sign_up.html";
+        }
+        bodyDiv.appendChild(signUpBtn);
+
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer').innerHTML = data;
+            })
+            .catch(error => {
+                console.error('Error fetching footer.html:', error);
+            });
+    </script>
+
+</body>
+</html>
