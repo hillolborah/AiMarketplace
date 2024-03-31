@@ -1,39 +1,144 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>modelhub.ai</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            min-height: 100vh; /* Set minimum height to full viewport height */
-            display: flex;
-            flex-direction: column; /* Arrange content vertically */
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>model_details</title>
+  <style>
+    body {
+      font-family: "Courier New", Courier, monospace;
+    }
+    .profile-info {
+      display: flex;
+      align-items: center;
+    }
+    .profile-icon {
+      width: 30px;
+      height: 30px;
+    }
 
-        #header-container {
-            /* Your header styles */
-        }
+    .author-name {
+      margin-left: 10px;
+      font-size: 15px;
+    }
 
-        #footer {
-            /* Footer styles */
-            background-color: #333;
-            color: #fff;
-            padding: 10px;
-            text-align: center;
-            margin-top: auto; /* Push footer to the bottom */
-        }
-    </style>
+    .link-container {
+      display: flex;
+      align-items: center;
+      margin-top: 10px;
+    }
+
+    .link-container a {
+      margin-left: 10px;
+    }
+
+    .link-svg {
+      width: 20px;
+      height: 20px;
+      margin-right: 8px;
+    }
+
+    .subscribe-button {
+      width: 100px;
+      height: 40px;
+      border-radius: 5px;
+      background-color: #0d6efd;
+      color: white;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-decoration: none;
+      text-align: center;
+      margin-top: 10px;
+      margin-left: 10px; /* Adjust left margin */
+      border-width: 1px;
+      border-style: solid;
+      border-color: #0d6efd;
+    }
+
+    .subscribe-button:hover {
+      background-color: #1d70fd;
+    }
+
+    .subscribe-button:active {
+      background-color: #0c52dd;
+    }
+
+    .subscribe-text {
+      text-decoration: none;
+      text-align: center;
+      line-height: 40px;
+      font-weight: 600;
+    }
+  </style>
 </head>
 <body>
-    <div id="header-container">
-        <!-- Your header content -->
+  <header id="header-container"></header>
+
+  <div id="body">
+    <h1>Model Name</h1>
+    <p>This is a paragraph on the model's details.</p>
+    <br>
+
+    <div class="profile-info">
+      <img
+        class="profile-icon"
+        src="https://upload.wikimedia.org/wikipedia/commons/2/2c/Default_pfp.svg"
+        alt="Profile Icon"/>
+      <span class="author-name">Author: Srinath</span>
     </div>
-    
-    <footer id="footer">
-        &copy; 2024 modelhub.ai
-    </footer>
+
+    <div class="link-container">
+      <!-- Add the link SVG -->
+      <object class="link-svg" type="image/svg+xml" data="/svg/link.svg" width="20" height="20"></object>
+
+      <!-- Add the link -->
+      <a
+        href="https://github.com/your-github-profile-url"
+        target="_blank">
+      https://github.com/your-github-profile-url
+      </a>
+    </div>
+
+    <a href="#" class="subscribe-button">
+      <span class="subscribe-text">Subscribe</span>
+    </a>
+  </div>
+
+  <footer id="footer"></footer>
+
+  <script>
+    const headerPath = "/header.html";
+    const footerPath = "/footer.html";
+
+    fetch(headerPath)
+      .then((response) => {
+        if (!response.ok) {
+          console.error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.text();
+      })
+      .then((data) => {
+        document.getElementById("header-container").innerHTML = data;
+      })
+      .catch((error) => {
+        console.error(`Error fetching ${headerPath}:`, error);
+      });
+
+    fetch(footerPath)
+      .then((response) => {
+        if (!response.ok) {
+          console.error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.text();
+      })
+      .then((data) => {
+        document.getElementById("footer").innerHTML = data;
+      })
+      .catch((error) => {
+        console.error(`Error fetching ${footerPath}:`, error);
+      });
+  </script>
 </body>
 </html>

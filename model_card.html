@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Model Card</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        /* Define styles for the model card */
+        .model-card {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 20px;
+            margin: 10px;
+            background-color: #f9f9f9;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            text-decoration: none;
+            color: #000;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        .model-card h2 {
+            margin-top: 0;
+            font-size: 20px;
+        }
+        .model-card p {
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        .model-card:hover {
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        .icons {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+        .icons i {
+            font-size: 16px;
+            margin-right: 5px;
+        }
+        .downloads, .likes {
+            font-size: 14px;
+            margin-left: 5px;
+        }
+        .download-count, .like-count {
+            margin-top: 1px;
+        }
+        .like-icon-container {
+            margin-left: 20px; /* Add margin between download count and like icon */
+        }
+    </style>
+</head>
+<body>
+    <!-- Model card container -->
+    <a href="models/model_details.html" class="model-card">
+        <!-- Model name -->
+        <h2>Model Name</h2>
+
+        <!-- Description -->
+        <p>Description of model.</p>
+
+        <!-- Icons -->
+        <div class="icons">
+            <div class="download-icon-container">
+                <i style="font-size:15px" class="fa">&#xf019;</i><span class="download-count">100</span>
+            </div>
+            <div class="like-icon-container">
+                <i style="font-size:15px" class="fa">&#xf004;</i><span class="like-count">50</span>
+            </div>
+        </div>
+
+        <!-- Add any additional information or buttons here -->
+    </a>
+</body>
+</html>
