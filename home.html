@@ -41,7 +41,7 @@
             });
 
         // Fetch model card HTML and append it to the model grid container
-        fetch('model_card.html')
+        fetch('/models/model_card.html')
             .then(response => response.text())
             .then(data => {
                 // Append model card HTML to the model grid container

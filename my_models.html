@@ -20,14 +20,6 @@
                 console.error('Error fetching header.html:', error);
             });
 
-            fetch('background.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('body').innerHTML = data;
-            })
-            .catch(error => {
-                console.error('Error fetching background.html:', error);
-            });
 
             fetch('footer.html')
             .then(response => response.text())

@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
         /* Define styles for the subscribed card */
-       .subscribed-card {
+        .subscribed-card {
             border: 1px solid #ccc;
             border-radius: 5px;
             padding: 20px;
@@ -21,35 +21,38 @@
             flex-direction: column;
             justify-content: space-between;
             font-family: 'Courier New', Courier, monospace;
+            transition: box-shadow 0.3s; /* Added transition for smooth hover effect */
         }
-       .subscribed-card h2 {
+        .subscribed-card h2 {
             margin-top: 0;
             font-size: 20px;
         }
-       .subscribed-card p {
+        .subscribed-card p {
             margin-bottom: 10px;
             font-size: 16px;
         }
-       .subscribed-card:hover {
+        .subscribed-card:hover {
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
         }
-       .icons {
+        .icons {
             display: flex;
             justify-content: center;
             margin-top: 10px;
+            align-items: center; /* Align items vertically */
         }
-       .icons i {
+        .icons i {
             font-size: 16px;
             margin-right: 5px;
         }
-       .price,.unsubscribe {
+        .price,.unsubscribe {
             font-size: 14px;
-            margin-left: 5px;
+            display: flex; /* Align items horizontally */
+            align-items: center; /* Align items vertically */
         }
-       .price-count {
+        .price-count {
             margin-top: 1px;
         }
-       .unsubscribe-btn {
+        .unsubscribe-btn {
             background-color: #f44336;
             color: white;
             padding: 5px 10px;
@@ -57,24 +60,31 @@
             border-radius: 5px;
             cursor: pointer;
         }
-       .unsubscribe-btn:hover {
+        .unsubscribe-btn:hover {
             background-color: #da190b;
+        }
+        .rupee-icon:before {
+            content: '\20B9';
+        }
+        /* Add spacing between price and unsubscribe button */
+        .price {
+            margin-right: 10px;
         }
     </style>
 </head>
 <body>
-    <!-- Subscribed card container -->
-    <div class="subscribed-card">
+    <!-- Anchor tag wrapping the subscribed card -->
+    <a href="/model_details/model_details.html" class="subscribed-card">
         <!-- Model name -->
-        <h2>Subscribed Channel Name</h2>
+        <h2>Model Name</h2>
 
         <!-- Description -->
-        <p>Channel description.</p>
+        <p>Model description.</p>
 
         <!-- Icons -->
         <div class="icons">
             <div class="price">
-                <i style="font-size:15px" class="fa">&#xf155;</i><span class="price-count">$0.99</span>
+                <i style="font-size:15px" class="fa rupee-icon"></i><span class="price-count">69/month</span>
             </div>
             <div class="unsubscribe">
                 <button class="unsubscribe-btn">Unsubscribe</button>
@@ -82,6 +92,6 @@
         </div>
 
         <!-- Add any additional information or buttons here -->
-    </div>
+    </a>
 </body>
 </html>
