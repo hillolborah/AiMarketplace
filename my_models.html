@@ -2,35 +2,54 @@
 <html lang="en">
 <head>
     <title>my_models</title>
-    
+    <!-- Add any CSS links or stylesheets here -->
+    <style>
+        /* Define grid layout styles */
+       .model-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Adjust column width as needed */
+            gap: 20px; /* Adjust gap between model cards */
+        }
+    </style>
 </head>
 <body>
     <div id="header-container"></div>
-    <!-- <div id = "body"></div> -->
-    <footer id="footer"></div>
+    
+    <!-- Container for the model cards -->
+    <div class="model-grid" id="model-grid-container"></div>
+    
+    <footer id="footer"></footer>
 
     <script>
-        
+        // Fetch header and footer files
         fetch('header.html')
-            .then(response => response.text())
-            .then(data => {
+           .then(response => response.text())
+           .then(data => {
                 document.getElementById('header-container').innerHTML = data;
             })
-            .catch(error => {
+           .catch(error => {  
                 console.error('Error fetching header.html:', error);
             });
 
-
-            fetch('footer.html')
-            .then(response => response.text())
-            .then(data => {
+        fetch('footer.html')
+           .then(response => response.text())
+           .then(data => {
                 document.getElementById('footer').innerHTML = data;
             })
-            .catch(error => {
+           .catch(error => {
                 console.error('Error fetching footer.html:', error);
             });
-    </script>
 
-   
+        // Fetch model card HTML and append it to the model grid container
+        fetch('my_models/my_model_card.html')
+           .then(response => response.text())
+           .then(data => {
+                // Append model card HTML to the model grid container
+                document.getElementById('model-grid-container').innerHTML = data.repeat(10); // Repeat the card for demo
+            })
+           .catch(error => {
+                console.error('Error fetching my_model_card.html:', error);
+            });
+    </script>
 </body>
 </html>

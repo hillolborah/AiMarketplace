@@ -46,10 +46,47 @@
             .then(data => {
                 // Append model card HTML to the model grid container
                 document.getElementById('model-grid-container').innerHTML = data.repeat(10); // Repeat the card for demo
+
+                // Attach event listener to the model grid container for handling clicks on unsubscribe buttons
+                document.getElementById('model-grid-container').addEventListener('click', function(event) {
+                    if (event.target.classList.contains('unsubscribe-btn')) {
+                        toggleSubscription(event);
+                    }
+                });
             })
             .catch(error => {
                 console.error('Error fetching model_card.html:', error);
             });
+
+        // Function to toggle subscription status
+        // function toggleSubscription(event) {
+        //     event.preventDefault(); // Prevent default anchor tag behavior
+        //     const button = event.target;
+        //     if (button.innerText === 'Unsubscribe') {
+        //         button.innerText = 'Subscribe';
+        //     } else {
+        //         button.innerText = 'Unsubscribe';
+        //     }
+        // }
+
+        // Function to toggle subscription status
+    function toggleSubscription(event) {
+        event.preventDefault(); // Prevent default anchor tag behavior
+        const button = event.target;
+        const messageElement = document.getElementById('message');
+
+        if (button.innerText === 'Unsubscribe') {
+            if (confirm("Are you sure you want to unsubscribe from Model Service?")) {
+                button.innerText = 'Subscribe';
+                messageElement.textContent = 'Unsubscribed from Model Service';
+            }
+        } else {
+            button.innerText = 'Unsubscribe';
+            messageElement.textContent = '';
+        }
+}
+
+        
     </script>
 </body>
 </html>

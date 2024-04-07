@@ -3,9 +3,152 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>My Model Card</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        /* Define styles for the model card */
+       .model-card {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 20px;
+            margin: 10px;
+            background-color: #f9f9f9;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            text-decoration: none;
+            color: #000;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            font-family: 'Courier New', Courier, monospace;
+        }
+       .model-card h2 {
+            margin-top: 0;
+            font-size: 20px;
+            margin-bottom: 10px;
+            align-self: flex-start;
+        }
+       .model-card p {
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+       .model-card:hover {
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+       .model-card-right {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-left: auto;
+        }
+       .icons {
+            display: flex;
+            justify-content: flex-start; /* Adjusted to align icons to the left */
+            align-items: center;
+            margin-top: 10px;
+        }
+       .icons i {
+            font-size: 16px;
+            margin-right: 5px; /* Adjusted margin for spacing */
+        }
+       .download-count, .like-count {
+            margin-left: 5px;
+            margin-right: 20px; /* Add spacing between downloads count and like icon */
+        }
+       .toggle-slider {
+            position: relative;
+            display: inline-block;
+            width: 40px;
+            height: 20px;
+            border-radius: 10px; /* Make the slider track rounded */
+            overflow: hidden; /* Hide the overflowing parts of the thumb */
+            margin-left: auto; /* Move the slider to the right side */
+            margin-top: -30px; /* Move the slider higher */
+        }
+       .toggle-slider input[type="checkbox"] {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+       .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            -webkit-transition:.4s;
+            transition:.4s;
+            border-radius: 10px; /* Make the slider thumb rounded */
+        }
+       .slider:before {
+            position: absolute;
+            content: "";
+            height: 16px;
+            width: 16px;
+            left: 2px;
+            bottom: 2px;
+            background-color: white;
+            -webkit-transition:.4s;
+            transition:.4s;
+            border-radius: 50%; /* Make the slider thumb circular */
+        }
+        input[type="checkbox"]:checked + .slider {
+            background-color: #2196F3;
+        }
+        input[type="checkbox"]:focus + .slider {box-shadow: 0 0 1px #2196F3;
+        }
+        input[type="checkbox"]:checked + .slider:before {
+           -webkit-transform: translateX(16px);
+            -ms-transform: translateX(16px);
+            transform: translateX(16px);
+        }
+        /* Add styles for the edit button */
+       .edit-button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 5px 10px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 12px;
+            margin: 10px 0px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-left: 10px; /* Add some space between the slider and the edit button */
+        }
+    </style>
 </head>
 <body>
-    
+    <!-- Model card container -->
+    <a href="/model_details/model_details.html" class="model-card">
+        <!-- Model name -->
+        <h2>Model Name</h2>
+
+        <!-- Icons -->
+        <div class="icons">
+            <div class="download-icon-container">
+                <i style="font-size:15px" class="fa">&#xf019;</i><span class="download-count">100</span>
+            </div>
+            <div class="like-icon-container">
+                <i style="font-size:15px" class="fa">&#xf004;</i><span class="like-count">50</span>
+            </div>
+        </div>
+
+        <!-- Toggle slider and edit button -->
+        <div class="model-card-right">
+            <!-- Toggle slider -->
+            <label class="toggle-slider">
+                <input type="checkbox">
+                <span class="slider"></span>
+            </label><!-- Edit button -->
+            <button class="edit-button">Edit</button>
+        </div>
+
+        <!-- Add any additional information or buttons here -->
+    </a>
 </body>
 </html>

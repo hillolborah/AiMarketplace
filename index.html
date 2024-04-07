@@ -1,33 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>index</title>
-    <!-- Add any CSS links or stylesheets here -->
-    <style>
-        /* Define grid layout styles */
-        .model-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Adjust column width as needed */
-            gap: 20px; /* Adjust gap between model cards */
-        }
-    </style>
+    <title>Add Models</title>
 </head>
 <body>
     <div id="header-container"></div>
-    
-    <!-- Container for the model cards -->
-    <div class="model-grid" id="model-grid-container"></div>
-    
-    <footer id="footer"></footer>
+
+    <h1 style="font-family: 'Courier New', Courier, monospace; text-align: center;">Add Model</h1>
+
+    <form id="model-form" style="text-align: center;">
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name" required><br>
+        <label for="manufacturer">Manufacturer:</label><br>
+        <input type="text" id="manufacturer" name="manufacturer" required><br>
+        <label for="year">Year:</label><br>
+        <input type="number" id="year" name="year" required><br>
+        <label for="description">Description:</label><br>
+        <textarea id="description" name="description" rows="4" cols="50" required></textarea><br>
+        <button type="submit">Add Model</button>
+    </form>
+
+    <div id="footer"></div>
 
     <script>
-        // Fetch header and footer files
+        // Fetch header and footer HTML
         fetch('header.html')
             .then(response => response.text())
             .then(data => {
                 document.getElementById('header-container').innerHTML = data;
             })
-            .catch(error => {  
+            .catch(error => {
                 console.error('Error fetching header.html:', error);
             });
 
@@ -40,16 +42,33 @@
                 console.error('Error fetching footer.html:', error);
             });
 
-        // Fetch model card HTML and append it to the model grid container
-        fetch('subscribed/subscribed_card.html')
-            .then(response => response.text())
+        // Add event listener for form submission
+        const form = document.getElementById('model-form');
+        form.addEventListener('submit', (event) => {
+            event.preventDefault();
+
+            // Gather form data
+            const formData = new FormData(form);
+            const modelData = Object.fromEntries(formData.entries());
+
+            // Send form data to server-side endpoint
+            fetch('/api/add-model', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(modelData)
+            })
+            .then(response => response.json())
             .then(data => {
-                // Append model card HTML to the model grid container
-                document.getElementById('model-grid-container').innerHTML = data.repeat(10); // Repeat the card for demo
+                console.log('Model added:', data);
+                // Reset form fields
+                form.reset();
             })
             .catch(error => {
-                console.error('Error fetching model_card.html:', error);
+                console.error('Error adding model:', error);
             });
+        });
     </script>
 </body>
 </html>
