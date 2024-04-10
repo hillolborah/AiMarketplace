@@ -35,8 +35,9 @@
     <h1 style="font-family: 'Courier New', Courier, monospace; text-align: center;">Add Model</h1>
 
     <form id="model-form" style="text-align: center;">
-        <input type="text" id="name" name="name" placeholder="Name of the model" required><br>
-        <select id="category" name="category" required>
+        <input type="text" id="name" name="name" style = "font-family: 'Courier New', Courier, monospace;" placeholder="Name of the model" required><br>
+        <br>
+        <select id="category" name="category" style = "font-family: 'Courier New', Courier, monospace;" required>
           <option value="" disabled selected hidden>Select Category</option>
           <option value="text">Text</option>
           <option value="video">Video</option>
@@ -44,20 +45,24 @@
           <option value="image">Image</option>
           <option value="generative">Generative Models</option>
         </select><br>
+        <br>
         <label for="description">Short description about the model:</label><br>
         <textarea id="description" name="description" rows="4" cols="50" required></textarea><br>
+        <br>
         <label for="github-link">Add your GitHub link here:</label><br>
-        <input type="text" id="github-link" name="github-link" value="https://" required><br>
+        <input type="text" id="github-link" name="github-link" style = "font-family: 'Courier New', Courier, monospace;" value="https://" required><br>
+        <br>
 
-        <!-- Add the file input -->
+        
         <input type="file" id="file-input" name="model-file" required><br>
 
         <div id="drop-area" class="drop-area">
             <p>Drop file here</p>
             <p>Or</p>
-            <button type="button" id="browse-button">Browse files</button>
+            <button type="button" id="browse-button" style = "font-family: 'Courier New', Courier, monospace;">Browse files</button>
         </div>
-        <button type="submit">Add Model</button>
+        <br>
+        <button type="submit" style = "font-family: 'Courier New', Courier, monospace;">Add Model</button>
     </form>
 
     <div id="footer"></div>
